@@ -11,21 +11,23 @@ class GradingStatsWorker {
   class Event {
    public:
     std::string timeStamp;
+    std::string eventType;
     std::string studentName;
     std::string labName;
     std::string taNetid;
-    std::string eventType;
+    std::string lockType;
 
     Event(const std::string &row) {
       std::istringstream rowSS(row);
       std::getline(rowSS, timeStamp, ',');
+      std::getline(rowSS, eventType, ',');
       std::getline(rowSS, studentName, ',');
       std::getline(rowSS, labName, ',');
       std::getline(rowSS, taNetid, ',');
-      std::getline(rowSS, eventType, ',');
+      std::getline(rowSS, lockType, ',');
     }
     bool isLock() {
-      return eventType == "LOCK";
+      return lockType == "LOCK";
     }
   };
 
@@ -97,7 +99,7 @@ class GradingStatsWorker {
       return longEnoughTaSeconds.front().first;
     }
   }
-  
+
   void interpret() {
     for (Event e : events) {
       mappedEvents[StudentAssignment(e.studentName, e.labName)].push_back(e);
@@ -115,7 +117,10 @@ class GradingStatsWorker {
     std::ifstream in(fileName);
     std::string row;
     while (std::getline(in, row)) {
-      events.push_back(Event(row));
+      Event event = Event(row);
+      if (event.eventType == "LAB") {
+        events.push_back(Event(row));
+      }
     }
     in.close();
     interpret();
