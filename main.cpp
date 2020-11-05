@@ -1,12 +1,12 @@
+#include <algorithm>
 #include <fstream>
-#include <vector>
 #include <set>
 #include <string>
-#include <algorithm>
+#include <vector>
 
+#include "GradingStatsWorker.h"
 #include "HelpInstance.h"
 #include "TeachingAssistant.h"
-#include "GradingStatsWorker.h"
 
 int index(const vector<TeachingAssistant> &teachingAssistants, string name) {
   for (int i = 0; i < teachingAssistants.size(); ++i) {
@@ -22,13 +22,12 @@ void writeInLabResults(vector<TeachingAssistant> teachingAssistants) {
   ofstream file;
   file.open("help-results.csv");
 
-
   file << "Name";
   file << ',' << "Total Time";
   file << ',' << "Helped";
   file << endl;
-	
-  for (TeachingAssistant& ta : teachingAssistants) {
+
+  for (TeachingAssistant &ta : teachingAssistants) {
     if (ta.getName() != "Themselves") {
       file << ta.getName();
       file << ',' << ta.getTotalHoursStr();
@@ -74,10 +73,7 @@ vector<TeachingAssistant> assignInstancesToTA(vector<HelpInstance> instances) {
   return teachingAssistants;
 }
 
-
-
 int main(int argc, char *argv[]) {
-
   string inLabFileLoc = "help-data.csv";
   string gradingFileLoc = "grade-data.csv";
 

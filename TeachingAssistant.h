@@ -1,26 +1,19 @@
 #ifndef TEACHING_ASSISTANT_H_
 #define TEACHING_ASSISTANT_H_
 
-#include <string>
 #include <sstream>
+#include <string>
 
 class TeachingAssistant {
  private:
   string name;
   vector<HelpInstance> helpInstances;
+
  public:
-  TeachingAssistant(string name) {
-    this->name = name;
-  }
-  void addHelpInstance(HelpInstance help) {
-    helpInstances.push_back(help);
-  }
-  string getName() const {
-    return name;
-  }
-  int getHelpInstanceTotal() const {
-    return helpInstances.size();
-  }
+  TeachingAssistant(string name) { this->name = name; }
+  void addHelpInstance(HelpInstance help) { helpInstances.push_back(help); }
+  string getName() const { return name; }
+  int getHelpInstanceTotal() const { return helpInstances.size(); }
   unsigned long long int getTotalHelpTime() const {
     unsigned long long int totalTime = 0;
     for (int i = 0; i < helpInstances.size(); i++) {
@@ -46,7 +39,7 @@ class TeachingAssistant {
     return out.str();
   }
 
-  bool operator < (const TeachingAssistant &comp) {
+  bool operator<(const TeachingAssistant &comp) {
     return (this->getName() < comp.getName());
   }
 };
