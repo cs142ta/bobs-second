@@ -1,4 +1,4 @@
-# THIS IS OLD AND OUTDATED. SOME THINGS ARE ACCURATE, SOME ARE NOT. DON'T USE THIS.
+# Bob's Minute has evolved into Bob's Shake, which is integrated with zygrader. This project is now dead.
 
 # Bob's minute
 
