@@ -1,6 +1,8 @@
-# Bob's Minute has evolved into Bob's Shake, which is integrated with zygrader. This project is now dead.
+# Bob's Minute has evolved into Bob's Shake, which is integrated with zygrader. This project is now archived.
 
 # Bob's minute
+
+## Credit for the idea and initial implementation (most of this code) goes to Bob McFadden
 
 ### How to use
 
